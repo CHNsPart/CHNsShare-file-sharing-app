@@ -30,5 +30,5 @@ const PORT = process.env.PORT
 
 /* App Listening Port */
 app.listen(PORT, 
-    () => console.log(`Server is listening on ${PORT}`)
+    () => console.log(`Server is sucking on ${PORT}`)
 )

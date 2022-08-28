@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 interface Ifile extends Document{
     filename: string
-    secured_url: string
+    secure_url: string
     sizeInBytes: string
     format: string
     sender?: string
@@ -16,7 +16,7 @@ const fileSchema = new Schema<Ifile>({
         type: String,
         require: true
     },
-    secured_url:{
+    secure_url:{
         type: String,
         require: true
     },

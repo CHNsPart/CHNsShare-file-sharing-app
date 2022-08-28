@@ -15,8 +15,7 @@ router.get("/upload", upload.single("myFile"), async(req,res)=>{
         if(!req.file){
             return res.status(400).json({ message: "No File was selected Maeeeen! 🥲" })
         }
-        console.log(req.file)
-
+        
         let uploadedFile: UploadApiResponse
 
         try {
@@ -37,11 +36,16 @@ router.get("/upload", upload.single("myFile"), async(req,res)=>{
         const file = await File.create({
             filename:originalname,
             sizeInBytes:bytes,
-            secured_url:secure_url,
+            secure_url:secure_url,
             format:format
         })
-        res.status(200).json(file)
-
+        res.status(200).json({
+            id:file._id,
+            downloadPageLink:`${process.env.API_BASE_ENDPOINT_CLIENT}download/${file._id}`,
+        })
+        console.log('==============GET-Files=============');
+        console.log(file);
+        console.log('====================================');
     } catch (error:any) {
         console.log('====================================');
         console.log(error.message);
